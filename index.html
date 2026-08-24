@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+    <link rel="stylesheet" href="invoice.css">
+    <script src="invoice.js" defer></script>
+    <!-- font Family -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Basic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container" id="app">
+        <!-- <h1 class="app-header">INVOICE GENERATOR</h1> -->
+        <div class="form-panel">
+            <!-- Business Or Sender Details (HTML) -->
+            <fieldset><legend>Your Business</legend></fieldset>
+            <label for="text">Business Name</label>
+            <input type="text" name="Business Name" id="business-name" placeholder="e.g., Nestle Ghana LTD">
+            <label for="text">Business Address</label>
+            <textarea name="address" id="business-address" placeholder="Street, City, ZIP, Country"></textarea>
+            <label for="email">Business Email</label>
+            <input type="email" name="Business Email" id="business-email" placeholder="johndoe11@example.com">
+            <label for="tel">Business Telephone</label>
+            <input type="tel" name="Business Contact" id="business-phone" placeholder="(+233) 245 273 9000">
+            <!-- Company Logo Upload - Form Panel -->
+            <fieldset><legend>Company Logo</legend></fieldset>
+            <div id="logo-upload-control">
+              <input type="file" id="logo-upload" accept="image/png, image/jpeg, image/webp, image/svg+xml">
+              <button type="button" id="remove-logo-btn" style="display: none;">Remove Logo</button>
+            </div>
+
+            <!-- Client Details (HTML) -->
+            <fieldset><legend>Bill To</legend></fieldset>
+            <label for="text">Client Name</label>
+            <input type="text" name="Client Name" id="client-name" placeholder="e.g., John Doe">
+            <label for="text">Client Address</label>
+            <textarea name="Client Address" id="client-address" placeholder="Client's street, City, ZIP"></textarea>
+            <label for="email">Client Email</label>
+            <input type="email" name="Client Email" id="client-email" placeholder="client@example.com">
+
+            <!-- Invoice Metadata -->
+             <fieldset><legend>Invoice Details</legend></fieldset>
+                <label for="text">Invoice number</label>
+             <input type="text" name="Invoice Number" id="invoice-num" value="INV-001">
+             <label for="date">Date of issue</label>
+             <input type="date" name="Date Of Issue" id="issue-date">
+             <label for="date">Payment Due Date</label>
+             <input type="date" name="Payment Due Date" id="due-date">
+             <select name="Currency" id="currency">
+               <option value="¢">¢ GHS</option>
+               <option value="£">£ GBP</option>
+               <option value="€">€ EUR</option>
+               <option value="$">$ USD</option>
+               <option value="¥">¥ CNY</option>
+               <option value="₦">₦ NGN</option>
+             </select>
+
+             <!-- Line Items -->
+              <fieldset><legend>Line Items</legend></fieldset>
+            <label for="text">Item Description</label>
+            <input type="text" name="Item Description" id="item-desc" placeholder="Service/Product name">
+            <label for="number">Item Quantity</label>
+            <input type="number" name="Item Quantity" id="item-qty" value="1" min="1">
+            <label for="number">Item Price</label>
+            <input type="number" name="Item Price" id="item-price" step="0.01" value="0.00">
+            <button id="add-item-btn">+ Add Item</button>
+
+            <!-- Adjustments & Totals (Form Side) -->
+             <div class="totals-form">
+                <label for="number">Tax Rate</label>
+                <input type="number" name="Tax Rate" id="tax-rate" placeholder="Tax % (e.g., 10)">
+                <label for="number">Discount</label>
+                <input type="number" name="Discount" id="discount-rate" step="0.1" value="0" placeholder="Discount %">
+                <label for="number">Shipping Cost</label>
+                <input type="number" name="Shipping Cost" id="shipping-cost" step="0.01" value="0.00" placeholder="Shipping Flat fee">
+             </div>
+             
+                <!-- Notes/Terms -->
+                 <fieldset><legend>Terms And Note</legend></fieldset> 
+                 <textarea name="Invoice Notes" id="invoice-notes" placeholder="Payment terms, thank you, or special instructions"></textarea>
+
+                 <!-- Form Action Buttons -->
+                  <div class="action-buttons">
+                    <button id="generate-btn">Update Preview</button>
+                    <button id="reset-btn">Reset Form</button>
+                    <button id="print-btn">Print / PDF</button>
+                  </div>
+        </div>
+
+        <!-- Preview Panel (Output Display) -->
+         <div class="preview-panel">
+            <div id="invoice-preview">
+                <!-- Preview Header-->
+                 <div id="preview-header">
+                    <h1>INVOICE</h1>
+                    <!-- Logo Display - Preview Panel -->
+                    <div id="preview-logo-container">
+                      <img id="preview-logo" src="" alt="Company Logo" style="display: none;">
+                      <div id="preview-logo-placeholder">[Logo Area]</div>
+                    </div>
+                 <!-- Preview: From / To -->
+                  <div id="preview-business-info">
+                    <strong>From:</strong>
+                    <span id="preview-biz-name"></span>
+                    <span id="preview-biz-addr"></span>
+                  </div>
+                  <div id="preview-client-info">
+                    <strong>Bill To:</strong>
+                    <span id="preview-client-name"></span>
+                    <span id="preview-client-addr"></span>
+                  </div>
+                  <div id="preview-meta">
+                    <span id="preview-invoice-num"></span>
+                    <span id="preview-issue-date"></span>
+                    <span id="preview-due-date"></span>
+                  </div>
+                 </div>
+                  <!-- Preview Items Table -->
+                   <table id="preview-items-table">
+                    <thead>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                    </thead>
+                    <tbody id="preview-items-body"></tbody>
+                   </table>
+                   <!-- Preview Summary Totals -->
+                    <div id="preview-summary" style="text-align: right;">
+                        <p>Subtotal: <span id="preview-subtotal">0.00</span></p>
+                        <p>Tax (<span id="preview-tax-label">0</span>%): <span id="preview-tax-amount">0.00</span></p>
+                        <p>Discount (<span id="preview-discount-label">0</span>%): <span id="preview-discount-amount">0.00</span></p>
+                        <p>Shipping: <span id="preview-shipping">0.00</span></p>
+                        <p class="grand-total">
+                            Grand Total: <span id="preview-grand-total">0.00</span>
+                        </p>
+                    </div>
+
+            </div>
+         </div>
+    </div>
+</body>
+</html>
