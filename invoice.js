@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 /* invoice.js - Invoice Generator core functionality
-=======
-﻿/* invoice.js - Invoice Generator core functionality
 >>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
    - Add / remove line items
    - Auto-calculate subtotal, tax, discount, shipping, grand total
@@ -31,10 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const itemPriceEl = document.getElementById('item-price');
   const addItemBtn = document.getElementById('add-item-btn');
 
-<<<<<<< HEAD
+
   // Metadata Code for JS.
-=======
->>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
   const taxRateEl = document.getElementById('tax-rate');
   const discountEl = document.getElementById('discount-rate');
   const shippingEl = document.getElementById('shipping-cost');
@@ -107,10 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     items.push({ desc, qty, price });
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
+
     // clear inputs for next item
     itemDescEl.value = '';
     itemQtyEl.value = '1';
@@ -190,11 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
       tr.appendChild(tdPrice);
       tr.appendChild(tdTotal);
       tr.appendChild(tdAction);
-<<<<<<< HEAD
-      
-=======
 
->>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
       previewItemsBody.appendChild(tr);
     });
 
@@ -204,10 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Get currency symbol
     const symbol = currencyEl ? currencyEl.value : '$';
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
+
     // Update totals display WITHOUT currency symbol (we'll add it in the next step)
     previewSubtotal.textContent = subtotal.toFixed(2);
     previewTaxLabel.textContent = taxRate.toFixed(1);
@@ -263,11 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Reset dates
     issueDateEl.value = new Date().toISOString().slice(0, 10);
     dueDateEl.value = '';
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
     // Reset logo
     if (previewLogo) {
       previewLogo.src = '';
@@ -294,6 +275,78 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => document.body.classList.remove('printing'), 1200);
     }, 150);
   }
+
+  // --- Download PDF (client-side using html2canvas + jsPDF) ---
+  function downloadPDF() {
+    const previewEl = document.getElementById('invoice-preview');
+    if (!previewEl) {
+      alert('Preview not available to export.');
+      return;
+    }
+
+    // Add printing class briefly to apply print styles if needed
+    document.body.classList.add('printing');
+
+    // Wait a tick for styles to apply
+    setTimeout(() => {
+      // html2canvas renders the preview element to a canvas
+      html2canvas(previewEl, { scale: 2, useCORS: true })
+        .then(canvas => {
+          try {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const imgProps = pdf.getImageProperties(imgData);
+
+            // Fit image to page width, scale height proportionally
+            const imgWidth = pageWidth;
+            const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
+
+            if (imgHeight <= pageHeight) {
+              pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            } else {
+              // Scale down proportionally so the full content fits on one page
+              const ratio = pageHeight / imgHeight;
+              const fitWidth = imgWidth * ratio;
+              const fitHeight = imgHeight * ratio;
+              pdf.addImage(imgData, 'PNG', (pageWidth - fitWidth) / 2, 0, fitWidth, fitHeight);
+            }
+
+            const filename = (invoiceNumEl && invoiceNumEl.value) ? invoiceNumEl.value + '.pdf' : 'invoice.pdf';
+            pdf.save(filename);
+          } catch (err) {
+            console.error('PDF generation error', err);
+            alert('An error occurred while generating the PDF.');
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Failed to render preview for PDF.');
+        })
+        .finally(() => {
+          // Remove printing helper once done
+          setTimeout(() => document.body.classList.remove('printing'), 300);
+        });
+    }, 120);
+  }
+
+  // Toggle print / download behavior depending on viewport (mobile/tablet -> download)
+  function updatePrintButtonBehavior() {
+    if (!printBtn) return;
+    const isSmall = window.matchMedia('(max-width: 1024px)').matches;
+    if (isSmall) {
+      printBtn.textContent = 'Download PDF';
+      printBtn.onclick = function(e) { e.preventDefault(); downloadPDF(); };
+    } else {
+      printBtn.textContent = 'Print / PDF';
+      printBtn.onclick = function(e) { e.preventDefault(); printInvoice(); };
+    }
+  }
+
+  // ensure initial behavior and update on resize
+  updatePrintButtonBehavior();
+  window.addEventListener('resize', updatePrintButtonBehavior);
 
   // --- LOGO Event Handlers ---
   if (logoUpload) {
@@ -343,11 +396,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (logoPlaceholder) logoPlaceholder.style.display = 'block';
       this.style.display = 'none';
       if (logoUpload) logoUpload.value = '';
-<<<<<<< HEAD
-        
-=======
-      
->>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
+
       // Remove from localStorage
       localStorage.removeItem('companyLogo');
     });
@@ -404,10 +453,7 @@ document.addEventListener('DOMContentLoaded', function () {
       el.addEventListener('input', renderPreview);
     }
   });
-<<<<<<< HEAD
-=======
 
->>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
   // Allow Enter key to add items
   if (itemDescEl) {
     itemDescEl.addEventListener('keydown', function(e) {
@@ -427,8 +473,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   renderPreview();
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
+
