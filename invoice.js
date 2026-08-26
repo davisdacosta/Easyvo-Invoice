@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* invoice.js - Invoice Generator core functionality
+=======
+﻿/* invoice.js - Invoice Generator core functionality
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
    - Add / remove line items
    - Auto-calculate subtotal, tax, discount, shipping, grand total
    - Update preview from form fields
@@ -27,7 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const itemPriceEl = document.getElementById('item-price');
   const addItemBtn = document.getElementById('add-item-btn');
 
+<<<<<<< HEAD
   // Metadata Code for JS.
+=======
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
   const taxRateEl = document.getElementById('tax-rate');
   const discountEl = document.getElementById('discount-rate');
   const shippingEl = document.getElementById('shipping-cost');
@@ -100,7 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     items.push({ desc, qty, price });
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
     // clear inputs for next item
     itemDescEl.value = '';
     itemQtyEl.value = '1';
@@ -180,7 +190,11 @@ document.addEventListener('DOMContentLoaded', function () {
       tr.appendChild(tdPrice);
       tr.appendChild(tdTotal);
       tr.appendChild(tdAction);
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
       previewItemsBody.appendChild(tr);
     });
 
@@ -190,7 +204,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Get currency symbol
     const symbol = currencyEl ? currencyEl.value : '$';
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
     // Update totals display WITHOUT currency symbol (we'll add it in the next step)
     previewSubtotal.textContent = subtotal.toFixed(2);
     previewTaxLabel.textContent = taxRate.toFixed(1);
@@ -246,7 +263,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Reset dates
     issueDateEl.value = new Date().toISOString().slice(0, 10);
     dueDateEl.value = '';
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
     // Reset logo
     if (previewLogo) {
       previewLogo.src = '';
@@ -322,7 +343,11 @@ document.addEventListener('DOMContentLoaded', function () {
       if (logoPlaceholder) logoPlaceholder.style.display = 'block';
       this.style.display = 'none';
       if (logoUpload) logoUpload.value = '';
+<<<<<<< HEAD
         
+=======
+      
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
       // Remove from localStorage
       localStorage.removeItem('companyLogo');
     });
@@ -379,6 +404,10 @@ document.addEventListener('DOMContentLoaded', function () {
       el.addEventListener('input', renderPreview);
     }
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
   // Allow Enter key to add items
   if (itemDescEl) {
     itemDescEl.addEventListener('keydown', function(e) {
@@ -398,4 +427,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   renderPreview();
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 6bdcc4d6d173131fcb1527950565e06a04408a7e
