@@ -296,7 +296,6 @@ body {
 }
 
 [data-theme="dark"] #preview-meta span,
-[data-theme="dark"] #preview-items-table thead th,
 [data-theme="dark"] .preview-notes-display {
    background: var(--surface-secondary) !important;
 }

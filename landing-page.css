@@ -1,0 +1,219 @@
+:root {
+    /* =========================
+       EASYVO BRAND COLORS
+    ========================= */
+
+    --primary: #2563EB;
+    --primary-light: #60A5FA;
+    --primary-dark: #1D4ED8;
+
+    --accent: #10B981;
+    --accent-dark: #059669;
+
+    /* =========================
+       LIGHT MODE
+    ========================= */
+
+    --bg: #FFFFFF;
+    --bg-secondary: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-secondary: #F3F4F6;
+
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+
+    --border: #E2E8F0;
+    --border-light: #F1F5F9;
+
+    /* =========================
+       STATUS COLORS
+    ========================= */
+
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --info: #3B82F6;
+
+    /* =========================
+       INTERACTION
+    ========================= */
+
+    --primary-hover: #1D4ED8;
+    --primary-active: #1E40AF;
+
+    /* =========================
+       INVOICE
+    ========================= */
+
+    --invoice-bg: #FFFFFF;
+    --invoice-text: #0F172A;
+    --invoice-muted: #64748B;
+    --invoice-border: #E2E8F0;
+    --invoice-accent: #2563EB;
+
+    /* =========================
+       SHADOWS
+    ========================= */
+
+    --shadow-sm:
+        0 1px 2px rgba(15, 23, 42, 0.05);
+
+    --shadow-md:
+        0 4px 12px rgba(15, 23, 42, 0.08);
+
+    --shadow-lg:
+        0 10px 30px rgba(15, 23, 42, 0.10);
+
+    /* =========================
+       RADIUS
+    ========================= */
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+
+    /* =========================
+       TRANSITIONS
+    ========================= */
+
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+}
+
+[data-theme="dark"] {
+    /* =========================
+       DARK MODE
+    ========================= */
+
+    --bg: #0F172A;
+    --bg-secondary: #111827;
+
+    --surface: #172033;
+    --surface-secondary: #1E293B;
+
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+
+    --border: #334155;
+    --border-light: #1E293B;
+
+    /* =========================
+       BRAND
+    ========================= */
+
+    --primary: #3B82F6;
+    --primary-light: #60A5FA;
+    --primary-dark: #2563EB;
+
+    --accent: #10B981;
+    --accent-dark: #059669;
+
+    /* =========================
+       INTERACTION
+    ========================= */
+
+    --primary-hover: #60A5FA;
+    --primary-active: #2563EB;
+
+    /* =========================
+       INVOICE
+    ========================= */
+
+    /*
+       Keep the actual invoice white.
+       The invoice is a document, not an app surface.
+    */
+
+    --invoice-bg: #FFFFFF;
+    --invoice-text: #0F172A;
+    --invoice-muted: #64748B;
+    --invoice-border: #E2E8F0;
+    --invoice-accent: #2563EB;
+
+    /* =========================
+       SHADOWS
+    ========================= */
+
+    --shadow-sm:
+        0 1px 2px rgba(0, 0, 0, 0.20);
+
+    --shadow-md:
+        0 4px 12px rgba(0, 0, 0, 0.25);
+
+    --shadow-lg:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Basic", sans-serif;
+}
+body {
+   background: var(--bg);
+   color: var(--text-primary);
+   padding: 0;
+   min-height: 100vh;
+   line-height: 1.5;
+}
+
+/* ===== TOP NAVBAR ===== */
+.top-navbar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0.75rem 1.5rem;
+   background: var(--bg);
+   border-radius: 12px;
+   margin: 1rem auto;
+   max-width: 1240px;
+   border: 1px solid var(--border);
+   box-shadow: var(--shadow-sm);
+}
+
+.navbar-left {
+   display: flex;
+   align-items: center;
+}
+
+.navbar-logo {
+   height: 44px;
+   max-width: 180px;
+   object-fit: contain;
+   display: block;
+}
+
+.navbar-right {
+   display: flex;
+   align-items: center;
+   gap: 0.75rem;
+}
+
+.theme-toggle-btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 44px;
+   height: 44px;
+   border: 1px solid var(--border);
+   border-radius: 10px;
+   background: var(--surface);
+   cursor: pointer;
+   transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+   background: var(--surface-secondary);
+   border-color: var(--primary);
+   transform: scale(1.05);
+}
+
+.theme-icon {
+   width: 24px;
+   height: 24px;
+   display: block;
+} 
