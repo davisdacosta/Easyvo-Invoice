@@ -697,6 +697,11 @@ body {
    line-height: 1.45;
    white-space: pre-wrap;
 }
+.back-link {
+   text-decoration: none;
+   color: var(--primary);
+   margin-left: 2rem;
+}
 
 @media (max-width: 1024px) {
    body {
