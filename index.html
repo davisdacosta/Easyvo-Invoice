@@ -3,27 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easyvo Invoice Generator</title>
-    <link rel="stylesheet" href="landing-page.css">
-    <script src="landing-page.js" defer></script>
-
-    <!-- Font Family -->
+    <meta name="description" content="Easyvo makes it simple to create clean, professional invoices for your customers.">
+    <title>Easyvo | Simple invoicing for small businesses</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Basic&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing-page.css">
+    <script src="landing-page.js" defer></script>
 </head>
 <body>
-    <!-- Top Navbar -->
-    <nav class="top-navbar" role="navigation" aria-label="Top navigation">
-        <div class="navbar-left">
-            <img id="navbar-logo" src="./images/easyvo-light-mode-logo.jpg" alt="EasyVO Logo" class="navbar-logo">
-        </div>
-        <div class="navbar-right">
-            <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle dark mode">
-                <img id="theme-icon" src="./icon/moon.svg" alt="Toggle theme" class="theme-icon">
-            </button>
-        </div>
-    </nav>
+    <header class="site-header">
+        <nav class="top-navbar" aria-label="Top navigation">
+            <a class="brand" href="#top" aria-label="Easyvo home">
+                <img id="navbar-logo" src="./images/easyvo-light-mode-logo.jpg" alt="Easyvo." class="navbar-logo">
+            </a>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#who-its-for">Who it's for</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <a href="invoice.html" class="nav-cta">Create an Invoice</a>
+            </div>
+            <div class="navbar-actions">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" aria-label="Switch to dark mode">
+                    <img id="theme-icon" src="./icon/moon.svg" alt="" class="theme-icon">
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero section-shell">
+            <div class="hero-copy">
+                <p class="eyebrow"><span aria-hidden="true"></span>Simple invoicing for small businesses</p>
+                <h1>Create professional <em>invoices</em> in minutes.</h1>
+                <p class="hero-description">Easyvo makes it simple to create clean, professional invoices for your customers—without complicated accounting software.</p>
+                <div class="hero-actions">
+                    <a href="#create" class="button button-primary">Create an Invoice</a>
+                    <a href="#how-it-works" class="button button-secondary">See How It Works</a>
+                </div>
+                <p class="supporting-text">No complicated setup. Just create, preview, and send.</p>
+            </div>
+            <div class="hero-img" aria-label="Invoice preview illustration">
+                <img src="./images/hero-mock-up-.png" alt="Easyvo invoice preview" class="float-img">
+                <div class="img-shadow" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <section class="value-strip section-shell" aria-label="Easyvo benefits">
+            <div><b>01</b><strong>Simple</strong><span>Enter your details and you're ready to go.</span></div>
+            <div><b>02</b><strong>Fast</strong><span>Create a professional invoice without starting blank.</span></div>
+            <div><b>03</b><strong>Professional</strong><span>Give customers an invoice that represents your business.</span></div>
+        </section>
+
+        <section class="content-section section-shell" id="features">
+            <div class="section-intro"><p class="section-label">WHAT EASYVO DOES</p><h2>From your business details to a finished invoice.</h2><p>Easyvo walks you through the information that matters, then turns it into a clean invoice you can review and use.</p></div>
+            <div class="flow-grid">
+                <article><span>01</span><h3>Add your business</h3><p>Save your business name, contact details and logo for your invoices.</p></article>
+                <article><span>02</span><h3>Add your customer</h3><p>Enter who you're billing and where the invoice should go.</p></article>
+                <article><span>03</span><h3>Add your items</h3><p>List your products or services, quantities and prices.</p></article>
+                <article><span>04</span><h3>Preview before you send</h3><p>Check your invoice before generating the final version.</p></article>
+            </div>
+        </section>
+
+        <section class="showcase section-shell">
+            <div class="showcase-card"><div class="showcase-copy"><p class="section-label">A CLEARER WAY TO WORK</p><h2>Simple tools. Professional results.</h2><p>Everything you need to create invoices that look right and make sense to your customers.</p><ul><li>Your business, your invoice</li><li>Clear itemized billing</li><li>Instant preview</li><li>Designed for smaller screens</li></ul></div><div class="mini-form"><div class="mini-form-title">Create your invoice <span>1 of 4</span></div><label>Business name<span>Davis Design Studio</span></label><label>Business email<span>you@yourbusiness.com</span></label><label>Company logo<span class="upload">Upload your logo</span></label><button type="button">Continue →</button></div></div>
+        </section>
+
+        <section class="content-section section-shell" id="who-its-for">
+            <div class="section-intro"><p class="section-label">WHO IT'S FOR</p><h2>Built for people who need to get paid.</h2><p>Whether you're working for yourself or running a growing business, Easyvo helps you invoice without unnecessary complexity.</p></div>
+            <div class="audience-grid"><article><span>✦</span><h3>Freelancers</h3><p>Designers, developers, writers, photographers and other independent professionals.</p></article><article><span>◼</span><h3>Small Businesses</h3><p>Create professional invoices for your customers without complicated accounting software.</p></article><article><span>↗</span><h3>Service Providers</h3><p>Contractors, technicians, consultants and other professionals who bill for their work.</p></article><article><span>◎</span><h3>Entrepreneurs</h3><p>Keep your invoicing simple while you focus on building your business.</p></article></div>
+        </section>
+
+        <section class="steps-section section-shell" id="how-it-works">
+            <div class="section-intro"><p class="section-label">HOW IT WORKS</p><h2>Your next invoice is four steps away.</h2></div>
+            <div class="steps-grid"><article><b>01</b><h3>Add your business</h3><p>Tell Easyvo who you're invoicing from.</p></article><article><b>02</b><h3>Add your customer</h3><p>Enter your customer's name and contact information.</p></article><article><b>03</b><h3>Add what you're billing</h3><p>Add your products or services, quantities and prices.</p></article><article><b>04</b><h3>Review your invoice</h3><p>Check the details, then generate your finished invoice.</p></article></div>
+            <a href="#create" class="button button-primary">Create My Invoice <span aria-hidden="true">→</span></a>
+        </section>
+
+        <section class="final-cta section-shell" id="create"><div><p class="section-label">READY WHEN YOU ARE</p><h2>Ready to create your next invoice?</h2><p>Skip the blank documents and complicated software. Create a professional invoice with Easyvo.</p></div><a href="#" class="button button-light">Create an Invoice <span aria-hidden="true">→</span></a><small>It only takes a few minutes.</small></section>
+
+        <section class="faq-section section-shell" id="faq"><div class="section-intro"><p class="section-label">FAQ</p><h2>Questions, answered.</h2></div><div class="faq-list"><details open><summary>What is Easyvo?</summary><p>Easyvo is a simple invoice generator that helps freelancers, entrepreneurs, service providers and small businesses create professional invoices quickly.</p></details><details><summary>Do I need accounting software?</summary><p>No. Easyvo is designed to keep invoice creation simple without requiring complicated accounting software.</p></details><details><summary>Can I add my business logo?</summary><p>Yes. You can add your business logo to personalize your invoices.</p></details><details><summary>Can I preview my invoice?</summary><p>Yes. Easyvo lets you review your invoice before generating the final version.</p></details><details><summary>Can I use Easyvo on my phone?</summary><p>Yes. Easyvo is designed with smaller screens in mind, making it easy to create invoices from your phone or tablet.</p></details><details><summary>Is Easyvo free?</summary><p>Easyvo is currently available as an MVP. Pricing and additional features may be introduced as the product grows.</p></details></div></section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-brand"><img src="./images/easyvo-light-mode-logo.jpg" alt="Easyvo."><p>Invoices made easy.</p></div><div><b>Product</b><a href="#features">Features</a><a href="#how-it-works">How It Works</a></div><div><b>Help</b><a href="#faq">FAQ</a><a href="mailto:hello@easyvo.app">Contact</a></div><div><b>Legal</b><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div><p class="copyright">© 2026 Easyvo. All rights reserved.</p></footer>
 </body>
 </html>
