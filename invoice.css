@@ -14,8 +14,8 @@
        LIGHT MODE
     ========================= */
 
-    --bg: #FFFFFF;
-    --bg-secondary: #F8FAFC;
+    --bg: #ffffff;
+    --bg-secondary: #dff3ff;
     --surface: #FFFFFF;
     --surface-secondary: #F3F4F6;
 
@@ -209,7 +209,7 @@ html {
 }
 
 body {
-   background: var(--bg);
+   background: var(--bg-secondary);
    color: var(--text-primary);
    padding: 0;
    min-height: 100vh;
@@ -221,11 +221,6 @@ body {
    box-sizing: border-box;
    padding: 0;
    font-family: "Basic", sans-serif;
-}
-.back-link{
-   text-decoration: none;
-   color: var(--primary);
-   margin-left: 2rem;
 }
 
 .app-container {
