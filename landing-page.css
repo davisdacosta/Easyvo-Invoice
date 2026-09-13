@@ -1,4 +1,5 @@
 :root {
+  --font: "IBM Plex Mono", monospace;
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
   --accent: #10b981;
@@ -46,7 +47,7 @@ h3,
 .button,
 .nav-cta,
 .section-label {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font);
 }
 
 a {
@@ -165,8 +166,8 @@ a {
 
 .eyebrow,
 .section-label {
-   font-family: "Plus Jakarta Sans", sans-serif;
-  color: var(--primary);
+   font-family: var(--font);
+  color: var(--accent);
   font-size: .72rem;
   font-weight: 800;
   letter-spacing: .12em;
@@ -196,12 +197,42 @@ a {
 }
 
 .hero h1 em {
-   text-decoration: underline;
+  cursor: pointer;
+  font-size: clamp(3rem, 9vw, 7rem);
    text-transform: capitalize;
    font-style: italic;
   color: var(--accent);
   font-family:"IBM Plex Mono", monospace;
+  display: inline-flex;
+
+  .wobble{
+    display: inline-block;
+    transition: transform 0.2s ease;
+    transform-origin: center;
+  }
+  em:hover .wobble,
+  .wobble:hover{
+    animation: wobble 0.6s ease-in-out infinite;
+  }
+  
 }
+  .wobble:nth-child(1){animation-delay: 0s;}
+  .wobble:nth-child(2){animation-delay: 0.5s;}
+  .wobble:nth-child(3){animation-delay: 0.10s;}
+  .wobble:nth-child(4){animation-delay: 0.15s;}
+  .wobble:nth-child(5){animation-delay: 0.20s;}
+  .wobble:nth-child(6){animation-delay: 0.25s;}
+  .wobble:nth-child(7){animation-delay: 0.30s;}
+  .wobble:nth-child(8){animation-delay: 0.35s;}
+
+  @keyframes wobble {
+    0% {transform: translateY(0)   rotate(0deg);}
+    25% {transform: translateY(-10px)   rotate(-10deg);}
+    50% {transform: translateY(0)   rotate(0deg);}
+    75% {transform: translateY(-10px)   rotate(10deg);}
+    100% {transform: translateY(0)   rotate(0deg);}
+  }
+
 
 .hero-description {
   max-width: 510px;
@@ -213,7 +244,8 @@ a {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 30px;
+  padding: 30px;
 }
 
 .button {
@@ -234,13 +266,12 @@ a {
 
 .button-secondary {
   background: var(--accent);
-  color: var(--text);
+  color: rgb(245, 246, 247);
   transition: 0.3s;
 }
 
 .button-secondary:hover {
-   border: 1px solid var(--accent);
-   background-color: var(--surface);
+   background-color: #10b981a9;
   color: var(--text);
 }
 .button-secondary:active{
@@ -430,8 +461,8 @@ a {
 
 .flow-grid span,
 .steps-grid b {
-  color: var(--primary);
-  font-family: "Plus Jakarta Sans";
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
   font-size: .8rem;
 }
 
@@ -480,58 +511,14 @@ a {
   font-weight: 800;
 }
 
-.mini-form {
+.mobile-mockup {
   padding: 25px;
   border-radius: 16px;
   background: var(--surface);
   box-shadow: var(--shadow);
 }
 
-.mini-form-title {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
-  font-family: "Plus Jakarta Sans";
-  font-size: .9rem;
-  font-weight: 700;
-}
 
-.mini-form-title span {
-  color: var(--primary);
-  font-size: .7rem;
-}
-
-.mini-form label {
-  display: block;
-  margin-top: 16px;
-  color: var(--muted);
-  font-size: .7rem;
-}
-
-.mini-form label span {
-  display: block;
-  margin-top: 6px;
-  padding: 11px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  font-size: .8rem;
-}
-
-.mini-form .upload {
-  color: var(--primary);
-}
-
-.mini-form button {
-  width: 100%;
-  margin-top: 23px;
-  padding: 12px;
-  border: 0;
-  border-radius: 9px;
-  background: var(--primary);
-  color: #fff;
-  font-weight: 700;
-}
 
 .audience-grid {
   display: grid;
@@ -669,7 +656,7 @@ summary:after {
 .site-footer b {
   display: block;
   margin-bottom: 12px;
-  font-family: "Plus Jakarta Sans";
+  font-family: "IBM Plex Mono", monospace;
   font-size: .78rem;
 }
 
@@ -687,287 +674,3 @@ summary:after {
   border-top: 1px solid var(--border);
 }
 
-@media (max-width: 800px) {
-  .top-navbar {
-    gap: 15px;
-  }
-
-  .nav-links {
-    gap: 14px;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 50px;
-    padding: 75px 0;
-  }
-
-  .hero-copy {
-    max-width: 650px;
-  }
-
-  .product-preview {
-    justify-content: flex-start;
-  }
-
-  .value-strip,
-  .flow-grid,
-  .audience-grid,
-  .steps-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .showcase-card {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 40px;
-  }
-
-  .final-cta {
-    grid-template-columns: 1fr;
-    margin-top: 80px;
-    padding: 45px 35px;
-  }
-
-  .final-cta small {
-    grid-column: auto;
-    text-align: left;
-  }
-
-  .site-footer {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .footer-brand {
-    grid-column: 1/-1;
-  }
-}
-
-@media (max-width: 600px) {
-  .section-shell {
-    width: min(100% - 32px, 1120px);
-  }
-
-  .top-navbar {
-    width: calc(100% - 32px);
-    padding: 10px 12px;
-  }
-
-  .nav-links,
-  .nav-cta {
-    display: none;
-  }
-
-  .navbar-logo {
-    width: 112px;
-  }
-
-  .navbar-actions {
-    margin-left: auto;
-  }
-
-  .hero {
-    padding: 60px 0;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.45rem, 12vw, 3.5rem);
-  }
-
-  .hero-description {
-    font-size: .98rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .button {
-    width: 100%;
-  }
-
-  .preview-window {
-    transform: none;
-  }
-
-  .invoice-sheet {
-    padding: 20px;
-  }
-
-  .value-strip,
-  .flow-grid,
-  .audience-grid,
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .value-strip {
-    gap: 18px;
-  }
-
-  .content-section,
-  .steps-section,
-  .faq-section {
-    padding: 80px 0;
-  }
-
-  .showcase {
-    padding-bottom: 80px;
-  }
-
-  .showcase-card {
-    padding: 28px 22px;
-  }
-
-  .final-cta {
-    margin-top: 65px;
-  }
-
-  .site-footer {
-    width: calc(100% - 32px);
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 80px;
-  }
-
-  .footer-brand {
-    grid-column: 1/-1;
-  }
-
-  .copyright {
-    grid-column: 1/-1;
-  }
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.mobile-menu-toggle {
-  display: none;
-  width: 42px;
-  height: 42px;
-  padding: 9px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
-  cursor: pointer;
-}
-
-.mobile-menu-toggle span {
-  display: block;
-  width: 20px;
-  height: 2px;
-  margin: 4px auto;
-  background: var(--text);
-  transition: transform .2s, opacity .2s;
-}
-
-.hero-img {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 390px;
-}
-
-.float-img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: min(100%, 520px);
-  height: auto;
-  animation: float 3s ease-in-out infinite;
-  will-change: transform;
-}
-
-.img-shadow {
-  position: absolute;
-  bottom: 28px;
-  width: 62%;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(15, 23, 42, .16);
-  filter: blur(13px);
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-30px);
-  }
-}
-
-@media (max-width: 600px) {
-  .top-navbar {
-    position: relative;
-  }
-
-  .mobile-menu-toggle {
-    display: block;
-  }
-
-  .nav-menu {
-    display: none;
-  }
-
-  .top-navbar.menu-open .nav-menu {
-    position: absolute;
-    z-index: 10;
-    top: calc(100% + 8px);
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
-    padding: 16px;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    background: var(--surface);
-    box-shadow: var(--shadow);
-  }
-
-  .top-navbar.menu-open .nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-
-  .top-navbar.menu-open .nav-links a {
-    display: block;
-    padding: 10px 4px;
-  }
-
-  .top-navbar.menu-open .nav-cta {
-    display: inline-flex;
-    width: 100%;
-  }
-
-  .top-navbar.menu-open .mobile-menu-toggle span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .top-navbar.menu-open .mobile-menu-toggle span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .top-navbar.menu-open .mobile-menu-toggle span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  .hero-img {
-    min-height: 280px;
-  }
-
-  .float-img {
-    width: min(100%, 390px);
-  }
-}
