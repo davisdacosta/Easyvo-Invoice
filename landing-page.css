@@ -514,7 +514,7 @@ a {
 .mobile-mockup {
   padding: 25px;
   border-radius: 16px;
-  background: var(--surface);
+  background: transparent;
   box-shadow: var(--shadow);
 }
 
